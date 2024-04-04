@@ -11,3 +11,4 @@ seaborn
 IPython
 flask_cors
 gunicorn
+ta
