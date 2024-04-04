@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>PredictBay</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <link href="/static/img/logoalt2.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css” />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+  <link href="/static/css/bootstrap-icons.css" rel="stylesheet">
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/static/css/boxicons.min.css" rel="stylesheet">
+  <link href="/static/css/quill.bubble.css" rel="stylesheet">
+  <link href="/static/css/quill.snow.css" rel="stylesheet">
+  <link href="/static/css/remixicon.css" rel="stylesheet">
+  <link href="/static/css/style.css" rel="stylesheet">
+  <link href="/static/css/styles.css" rel="stylesheet">
+
+<style>
+  ::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #343a40;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    -ms-overflow-style: none;
+    background-color: #adb5bd;
+    border-radius: 25px;
+    border: 3px #dee2e6;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+  }
+</style>
+
+</head>
+
+<body>
+
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+  <div class="d-flex align-items-center justify-content-between">
+    <a href="{{url_for('index')}}" class="logo d-flex align-items-center">
+      <img src="/static/img/logoalt2.png" alt="">
+      <span class="d-none d-lg-block">PredictBay</span>
+    </a>
+    <i class="bi bi-list toggle-sidebar-btn"></i>
+  </div>
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+        <li class="nav-item dropdown pe-3">
+          <div id="user-button"></div>
+        </li>
+    
+      </ul>
+    </nav>
+
+  </header>
+
+   <!-- ======= login script ====== -->
+    
+    <script>
+      const publishableKey = "pk_test_dGlnaHQtb3J5eC04MC5jbGVyay5hY2NvdW50cy5kZXYk";
+
+      const startClerk = async () => {
+        const Clerk = window.Clerk;
+
+        try {
+          // Load Clerk environment and session if available
+          await Clerk.load();
+
+          const userButton = document.getElementById("user-button");
+          const authLinks = document.getElementById("auth-links");
+
+          Clerk.addListener(({ user }) => {
+            // Display links conditionally based on user state
+            authLinks.style.display = user ? "none" : "block";
+          });
+
+          if (Clerk.user) {
+            // Mount user button component
+            Clerk.mountUserButton(userButton);
+            userButton.style.margin = "auto";
+          }
+        } catch (err) {
+          console.error("Error starting Clerk: ", err);
+        }
+      };
+
+      (() => {
+        const script = document.createElement("script");
+        script.setAttribute("data-clerk-publishable-key", publishableKey);
+        script.async = true;
+        script.src = `https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js`;
+        script.crossOrigin = "anonymous";
+        script.addEventListener("load", startClerk);
+        script.addEventListener("error", () => {
+          document.getElementById("no-frontend-api-warning").hidden = false;
+        });
+        document.body.appendChild(script);
+      })();
+
+    </script>
+    
+    <!-- ====== end login ====== -->
+
+  <aside id="sidebar" class="sidebar">
+  
+    <ul class="sidebar-nav" id="sidebar-nav">
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed " href="{{url_for('index')}}">
+          <i class="bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('indicators')}}">
+          <i class="bi bi-bar-chart"></i>
+          <span>Indicators</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('trade')}}">
+          <i class="bi bi-currency-exchange"></i>
+          <span>Trade</span>
+        </a>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('logs')}}">
+          <i class="bi bi-clock-history"></i>
+          <span>Logs</span>
+        </a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('faq')}}">
+          <i class="bi bi-question-circle"></i>
+          <span>F.A.Q</span>
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('contact')}}">
+          <i class="bi bi-envelope"></i>
+          <span>Contact</span>
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('news')}}">
+          <i class="bi bi-newspaper"></i>
+          <span>News</span>
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('gchat')}}">
+          <i class="bi bi-chat-right-dots"></i>
+          <span>Global Chat</span>
+        </a>
+      </li>
+  
+<!--       <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('register')}}">
+          <i class="bi bi-card-list"></i>
+          <span>Register</span>
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('login')}}">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Login</span>
+        </a>
+      </li> -->
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('overview')}}">
+          <i class="bi bi-dash-circle"></i>
+          <span>Overview</span>
+        </a>
+      </li>
+  
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{{url_for('about')}}">
+          <i class="bi bi-person"></i>
+          <span>About Us</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href='javascript:;' onclick="Clerk.openSignIn()" id="auth-links">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Login</span>
+        </a>
+      </li>
+  
+    </ul>
+  
+  </aside>
+
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Overview</h1>
+    </div>
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-6">
+    
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Advanced Machine Learning Models</h5>
+              <p>Our cutting-edge website, PredictBay, harnesses the potential of state-of-the-art machine learning models
+                such as LSTM, Bi-LSTM, and GRU. By leveraging these powerful algorithms, we accurately predict stock closing
+                prices for the next day. Our models delve deep into historical stock data, capturing intricate patterns and
+                trends to generate reliable forecasts.
+              </p>
+            </div>
+          </div>
+    
+        </div>
+    
+        <div class="col-lg-6">
+    
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Buy-Sell Suggestions with Smart Indicators
+              </h5>
+              <p>We equip you with invaluable buy-sell suggestions supported by a range of five dynamic indicators. RSI
+                (Relative Strength Index), MA (Moving Average), MACD (Moving Average Convergence Divergence), and more. Our
+                indicators provide real-time signals, empowering you to make informed decisions about your investments.
+              </p>
+            </div>
+          </div>
+    
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="col-lg-6">
+    
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Trust and Transparency with Blockchain
+              </h5>
+              <p>In an industry where trust matters, PredictBay introduces an ingenious blockchain-based proof system. This
+                incorruptible database presents an indisputable record of our predicted closing prices alongside the actual
+                market results from previous days. Our commitment to transparency ensures you can rely on our predictions
+                with unwavering confidence.
+              </p>
+            </div>
+          </div>
+    
+        </div>
+    
+        <div class="col-lg-6">
+    
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Maximize Your Gains with our Profit Calculator
+              </h5>
+              <p>Wondering what your investment could have grown into today? Our intuitive profit calculator allows you to
+                estimate your potential returns by simply entering your investment amount and the date of investment. Stay
+                ahead of the game and gain valuable insights into your portfolio's performance.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="col-lg-6">
+    
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Elevate Your Knowledge with our Learning Hub
+              </h5>
+              <p>Master the Art of Trading: PredictBay not only offers exceptional prediction capabilities but also serves
+                as an invaluable learning resource. Our comprehensive Learning Hub is tailored for novice investors,
+                providing curated content that demystifies stock trading terms, strategies, and concepts. Expand your
+                knowledge, make informed decisions, and grow as a successful trader.</p>
+            </div>
+          </div>
+        </div>
+    
+        <div class="col-lg-6">
+    
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Strategic Guidance with Turtle Strategy and Neural Analysis
+              </h5>
+              <p>At PredictBay, we provide comprehensive strategic guidance by integrating the renowned Turtle Strategy with
+                cutting-edge neural analysis techniques. The Turtle Strategy, known for its disciplined trading based on
+                systematic rules, is combined with neural analysis insights to help you optimize your trading approach,
+                identify hidden patterns, and stay ahead of market fluctuations. Gain a competitive edge and unlock new
+                levels of success in your stock trading journey with PredictBay.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>PredictBay</span></strong>. All Rights Reserved
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<script src="/static/js/apexcharts.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/main.js"></script>
+<script src="/static/js/quill.min.js"></script>
+<script src="/static/js/tinymce.min.js"></script>
+<script src="/static/js/simple-datatables.js"></script>
+<script src="/static/js/validate.js"></script>
+
+</body>
+</html>
