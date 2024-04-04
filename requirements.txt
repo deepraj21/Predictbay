@@ -13,3 +13,4 @@ flask_cors
 gunicorn
 ta
 cryptography
+yahoo-fin
