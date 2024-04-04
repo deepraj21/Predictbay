@@ -15,3 +15,4 @@ ta
 cryptography
 yahoo-fin
 mpld3
+pandas_ta
