@@ -12,3 +12,4 @@ IPython
 flask_cors
 gunicorn
 ta
+cryptography
