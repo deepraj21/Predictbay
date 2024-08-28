@@ -1,0 +1,19 @@
+flask
+yfinance
+numpy
+pandas
+scikit-learn
+tensorflow==2.13.1
+plotly
+statsmodels
+matplotlib
+seaborn
+IPython
+flask_cors
+gunicorn
+ta
+# cryptography
+yahoo-fin
+mpld3
+requests_html
+pandas_ta
