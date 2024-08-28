@@ -43,8 +43,8 @@ from queue import Queue
 # from cryptography.hazmat.backends import default_backend
 # from cryptography.hazmat.primitives import serialization, hashes
 # from cryptography.hazmat.primitives.asymmetric import rsa, padding
-import sqlite3
-from sqlite3 import Error
+# import sqlite3
+# from sqlite3 import Error
 import time
 from time import ctime, sleep
 import datetime

@@ -3,7 +3,7 @@ yfinance
 numpy
 pandas
 scikit-learn
-tensorflow==2.13.1
+# tensorflow==2.13.1
 plotly
 statsmodels
 matplotlib
