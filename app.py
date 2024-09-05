@@ -58,9 +58,37 @@ import pandas_ta as pta
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.linear_model import LinearRegression
 from sklearn.impute import SimpleImputer
+from flask_socketio import emit 
+from flask_socketio import SocketIO 
 
 
 app = Flask(__name__)
+app.config["DEBUG"] = True
+app.config["SECRET_KEY"] = "secret"
+
+socketio = SocketIO()
+
+socketio.init_app(app)
+
+users = {}
+
+@socketio.on("connect")
+def handle_connect():
+    print("Client connected!")
+
+@socketio.on("user_join")
+def handle_user_join(username):
+    print(f"User {username} joined!")
+    users[username] = request.sid
+
+@socketio.on("new_message")
+def handle_new_message(message):
+    print(f"New message: {message}")
+    username = None 
+    for user in users:
+        if users[user] == request.sid:
+            username = user
+    emit("chat", {"message": message, "username": username}, broadcast=True)
 
 class InvalidTickerError(Exception):
     pass
@@ -528,11 +556,6 @@ def index():
         return render_template('index.html', ticker=ticker, chart_data=chart_data,  ma100=ma100,ma200=ma200,high_value=high_value,close_value=close_value,open_value=open_value,high_status=increase_status_high,high_percent=percentage_change_high,Close_status=increase_status_Close,Close_percent=percentage_change_Close,Open_status=increase_status_Open,Open_percent=percentage_change_Open,company_name=company_name,market_cap=market_cap_formatted,short_description=short_description,chart=chart)
     except InvalidTickerError as e:
         return render_template('errorpage.html')
-        if request.method == 'POST':
-            ticker = request.form['ticker']
-            index()
-
-
 
 # Function to get today's high value of a stock
 def get_today_high(symbol):
@@ -560,7 +583,7 @@ def get_today_open(symbol):
 
 def get_percentage_change_high(symbol):
     stock = yf.Ticker(symbol)
-    data = stock.history(period='1d')
+    data = stock.history(period='5d')
     if len(data) >= 2:
         yesterday_high = data['High'].iloc[-2]
         today_high = data['High'].iloc[-1]
@@ -577,7 +600,7 @@ def get_percentage_change_high(symbol):
 
 def get_percentage_change_Close(symbol):
     stock = yf.Ticker(symbol)
-    data = stock.history(period='1d')
+    data = stock.history(period='5d')
     if len(data) >= 2:
         yesterday_high = data['Close'].iloc[-2]
         today_high = data['Close'].iloc[-1]
@@ -594,7 +617,7 @@ def get_percentage_change_Close(symbol):
 
 def get_percentage_change_Open(symbol):
     stock = yf.Ticker(symbol)
-    data = stock.history(period='1d')
+    data = stock.history(period='5d')
     if len(data) >= 2:
         yesterday_high = data['Open'].iloc[-2]
         today_high = data['Open'].iloc[-1]

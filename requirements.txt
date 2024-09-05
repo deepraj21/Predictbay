@@ -17,3 +17,9 @@ yahoo-fin
 mpld3
 requests_html
 pandas_ta
+python-engineio==4.4.0
+python-socketio==5.8.0
+Flask-SocketIO==5.3.3
+dnspython==2.3.0
+eventlet==0.33.3
+greenlet==2.0.2
