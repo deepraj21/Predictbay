@@ -31,10 +31,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
-    .teams .title::after {
-      content: "";
-    }
-
     .teams .carousel .card {
       background: #222;
       border-radius: 6px;
@@ -61,7 +57,7 @@
     }
 
     .teams .carousel .card .text {
-      font-size: 25px;
+      font-size: 20px;
       font-weight: 500;
       margin: 10px 0 7px 0;
     }
@@ -118,8 +114,39 @@
       border-radius: 25px;
       border: 3px #dee2e6;
     }
+
     ::-webkit-scrollbar-thumb:hover {
       background-color: #555;
+    }
+
+    .profile-info {
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .profile-info h5 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .profile-info .label {
+      font-size: 0.9rem;
+      color: #adb5bd;
+    }
+
+    .social-links {
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      font-size: 20px;
+      margin: 0 10px;
+      color: #adb5bd;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: #fff;
     }
   </style>
 
@@ -289,129 +316,7 @@
     <section class="teams" id="teams">
       <div class="max-width">
         <div class="carousel owl-carousel">
-          <div class="card">
-            <div class="box">
-              <img src="/static/img/mayukh_dp.jpg" alt="">
-              <div class="text">
-                <h2>Mayukh Mondal</h2>
-              </div>
-              <p>
-              <h3>MLOps | Backend | DevOps</h3>
-              <div class="social-links mt-2">
-                <a href="https://github.com/Mayukh-Mondal-Dev" class="github" target="_blank"><i
-                    class="bi bi-github"></i></a>
-                <a href="https://instagram.com/_arko._" class="instagram" target="_blank"><i
-                    class="bi bi-instagram"></i></a>
-                <a href="https://twitter.com/MayukhM026" class="twitter" target="_blank"><i
-                    class="bi bi-twitter"></i></a>
-                <a href="https://www.linkedin.com/in/mayukh-mondal-0a01b1225/" class="linkedin" target="_blank"><i
-                    class="bi bi-linkedin"></i></a>
-              </div>
-              <div class="col-xl-8">
-                <h5 class="card-title">Profile Details</h5>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label " style="font-size: 15px;">Name</div>
-                  <div class="col-lg-9 col-md-8">
-                    <h5><b>Mayukh Mondal</b></h5>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label " style="font-size: 15px;">Country</div>
-                  <div class="col-lg-9 col-md-8">
-                    <h5><b>India</b></h5>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label" style="font-size: 14px;">Address</div>
-                  <div class="col-lg-9 col-md-8">
-                    <h5><b>Durgapur WB</b></h5>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Phone</div>
-                  <div class="col-lg-9 col-md-8">
-                    <h5><b>(+91)89007 79277</b></h5>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Email</div>
-                  <div class="col-lg-9 col-md-8">
-                    <h5><b><a href="mailto:21051405@kiit.ac.in"
-                          style="color:rgb(252, 246, 246)">21051405@kiit.ac.in</a></b></h5>
-                  </div>
-                </div>
-
-              </div>
-
-              </p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="box">
-              <img src="/static/img/abhishek.jpg" alt="">
-              <div class="text">
-                <h2>Abhishek Mallick</h2>
-              </div>
-              <p>
-              <h3>ML | FullStack</h3>
-              <div class="social-links mt-2">
-                <a href="https://github.com/Abhishek-Mallick" class="github" target="_blank"><i
-                    class="bi bi-github"></i></a>
-                <a href="https://instagram.com/_abhishek_mallick_" class="instagram" target="_blank"><i
-                    class="bi bi-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/abhishek-mallick09/" class="linkedin" target="_blank"><i
-                    class="bi bi-linkedin"></i></a>
-              </div>
-
-              <div class="col-xl-8">
-                <h5 class="card-title">Profile Details</h5>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label " style="font-size: 15px;">Name</div>
-                  <div class="col-lg-9 col-md-8">
-                    <h5><b>Abhishek Mallick</b></h5>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label " style="font-size: 15px;">Country</div>
-                  <div class="col-lg-9 col-md-8">
-                    <h5><b>India</b></h5>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label" style="font-size: 14px;">Address</div>
-                  <div class="col-lg-9 col-md-8">
-                    <h5><b>Kolkata WB</b></h5>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Phone</div>
-                  <div class="col-lg-9 col-md-8">
-                    <h5><b>(+91)62916 53332</b></h5>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Email</div>
-                  <div class="col-lg-9 col-md-8">
-                    <h5><b><a href="mailto:21051706@kiit.ac.in"
-                          style="color:rgb(252, 246, 246)">21051706@kiit.ac.in</a></b></h5>
-                  </div>
-                </div>
-
-              </div>
-
-              </p>
-            </div>
-          </div>
+          
           <div class="card">
             <div class="box">
               <img src="/static/img/1686636419497.jpg" alt="">
@@ -472,68 +377,7 @@
               </p>
             </div>
           </div>
-          <div class="card">
-            <div class="box">
-              <img src="/static/img/harshit.jpg" alt="">
-              <div class="text">
-                <h2>Harshit Mania</h2>
-              </div>
-              <p>
-              <h3>MERN</h3>
-              <div class="social-links mt-2">
-                <a href="https://github.com/Harshitm14" class="github" target="_blank"><i class="bi bi-github"></i></a>
-                <a href="https://instagram.com/maniaishere03" class="instagram" target="_blank"><i
-                    class="bi bi-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/harshit-mania-720bbb236/" class="linkedin" target="_blank"><i
-                    class="bi bi-linkedin"></i></a>
-              </div>
-
-              <div class="col-xl-8">
-
-
-                <h5 class="card-title">Profile Details</h5>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label " style="font-size: 15px;">Name</div>
-                  <div class="col-lg-9 col-md-8">
-                    <h5><b>Harshit Mania</b></h5>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Country</div>
-                  <div class="col-lg-9 col-md-8">
-                    <h5><b>India</b></h5>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label" style="font-size: 14px;">Address</div>
-                  <div class="col-lg-9 col-md-8">
-                    <h5><b>Bokaro Jharkhand</b></h5>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Phone</div>
-                  <div class="col-lg-9 col-md-8">
-                    <h5><b>(+91)82601 53995</b></h5>
-                  </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label" style="font-size: 15px;">Email</div>
-                  <div class="col-lg-9 col-md-8">
-                    <h5><b><a href="mailto:21051398@kiit.ac.in"
-                          style="color:rgb(252, 246, 246)">21051398@kiit.ac.in</a></b></h5>
-                  </div>
-                </div>
-
-              </div>
-
-              </p>
-            </div>
-          </div>
+          
 
         </div>
       </div>
@@ -560,7 +404,7 @@
   <script src="/static/js/simple-datatables.js"></script>
   <script src="/static/js/validate.js"></script>
 
-  <script>
+ <script>
     $('.carousel').owlCarousel({
       margin: 20,
       loop: true,
@@ -573,11 +417,11 @@
           nav: false
         },
         600: {
-          items: 2,
+          items: 1,
           nav: false
         },
         1000: {
-          items: 3,
+          items: 1,
           nav: false
         }
       }
